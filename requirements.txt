@@ -1,0 +1,11 @@
+flask
+flask-session
+msal
+requests
+google-generativeai
+pandas
+PyPDF2
+python-docx
+python-dotenv
+
+
