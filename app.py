@@ -988,6 +988,5 @@ def logout():
 if __name__ == '__main__':
     print("🚀 Starting OneDrive + Gemini Flask App...")
     print("📍 Now with file/folder selection!")
-    if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))  
     app.run(debug=False, host='0.0.0.0', port=port)
