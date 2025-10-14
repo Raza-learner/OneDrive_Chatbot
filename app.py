@@ -823,7 +823,7 @@ def chat():
                          username=session['user'],
                          directory_structure=directory_structure)
 
-@app.route('/api/chat', methods=['POST'])
+@app.route('/api/chat', methods=['POST','GET'])
 def api_chat():
     user_key = get_user_key()
     assistant = assistant_store.get(user_key)
