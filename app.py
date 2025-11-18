@@ -58,13 +58,13 @@ class OneDriveGeminiAssistant:
         self.genai = self.initialize_gemini()
         self.file_cache = {}  # Cache for downloaded file contents
         self.cache_max_size = 50  # Maximum number of files to cache
-        print(f"✅ Assistant initialized with access token: {bool(access_token)}")
+        print(f"Assistant initialized with access token: {bool(access_token)}")
     
     def initialize_gemini(self):
         """Initialize Gemini with correct configuration"""
         try:
             if not GEMINI_API_KEY:
-                print("❌ No Gemini API key found")
+                print("No Gemini API key found")
                 return None
                 
             # Configure Gemini
@@ -80,29 +80,29 @@ class OneDriveGeminiAssistant:
             successful_model = None
             for model_name in model_names_to_try:
                 try:
-                    print(f"🔄 Trying model: {model_name}")
+                    print(f"Trying model: {model_name}")
                     model = genai.GenerativeModel(model_name)
                     # Test with a simple prompt
                     response = model.generate_content("Hello")
                     if response and response.text:
                         successful_model = model_name
-                        print(f"✅ Successfully initialized: {model_name}")
+                        print(f"Successfully initialized: {model_name}")
                         break
                     else:
-                        print(f"⚠️ Model {model_name} responded but with no text")
+                        print(f"Model {model_name} responded but with no text")
                 except Exception as e:
-                    print(f"❌ Failed with {model_name}: {e}")
+                    print(f"Failed with {model_name}: {e}")
                     continue
             
             if successful_model:
                 return genai.GenerativeModel(successful_model)
             else:
-                print("❌ All model attempts failed")
-                print("💡 Check your API key at: https://aistudio.google.com/app/apikey")
+                print("All model attempts failed")
+                print("Check your API key at: https://aistudio.google.com/app/apikey")
                 return None
                 
         except Exception as e:
-            print(f"❌ Gemini configuration error: {e}")
+            print(f"Gemini configuration error: {e}")
             return None
 
     def make_graph_api_call(self, endpoint):
@@ -119,25 +119,25 @@ class OneDriveGeminiAssistant:
             if response.status_code == 200:
                 return response.json()
             elif response.status_code == 403:
-                print(f"❌ Permission denied for: {endpoint}")
+                print(f"Permission denied for: {endpoint}")
                 return None
             else:
-                print(f"❌ API call failed ({response.status_code}): {endpoint}")
+                print(f"API call failed ({response.status_code}): {endpoint}")
                 return None
                 
         except Exception as e:
-            print(f"❌ API call error: {e}")
+            print(f"API call error: {e}")
             return None
 
     def test_connection(self):
         """Test if we can access OneDrive"""
         try:
-            print("🔍 Testing OneDrive connection...")
+            print("Testing OneDrive connection...")
             
             # Test 1: Can we get user info?
             user_info = self.make_graph_api_call('/me')
             if not user_info:
-                return "❌ Cannot get user information"
+                return "Cannot get user information"
             
             user_name = user_info.get('displayName', 'Unknown')
             print(f"✅ User: {user_name}")
@@ -145,27 +145,27 @@ class OneDriveGeminiAssistant:
             # Test 2: Can we access OneDrive?
             drive_info = self.make_graph_api_call('/me/drive')
             if not drive_info:
-                return "❌ Cannot access OneDrive - check Files.Read permissions"
+                return "Cannot access OneDrive - check Files.Read permissions"
             
-            print(f"✅ OneDrive Type: {drive_info.get('driveType', 'Unknown')}")
+            print(f"OneDrive Type: {drive_info.get('driveType', 'Unknown')}")
             
             # Test 3: Can we list root items?
             root_items = self.make_graph_api_call('/me/drive/root/children')
             if not root_items:
-                return "❌ Cannot list root items"
+                return "Cannot list root items"
             
             items = root_items.get('value', [])
-            print(f"✅ Found {len(items)} items in root directory")
+            print(f"Found {len(items)} items in root directory")
             
-            return f"✅ Connection successful! Found {len(items)} items in OneDrive root"
+            return f"Connection successful! Found {len(items)} items in OneDrive root"
             
         except Exception as e:
-            return f"❌ Connection test error: {str(e)}"
+            return f"Connection test error: {str(e)}"
 
     def get_directory_structure(self, folder_path="/"):
         """Get complete directory structure from OneDrive"""
         try:
-            print(f"📁 Getting directory structure from: {folder_path}")
+            print(f"Getting directory structure from: {folder_path}")
             
             if folder_path == "/":
                 endpoint = '/me/drive/root/children'
@@ -176,11 +176,11 @@ class OneDriveGeminiAssistant:
             
             items_data = self.make_graph_api_call(endpoint)
             if not items_data:
-                print(f"❌ No data returned for: {folder_path}")
+                print(f"No data returned for: {folder_path}")
                 return []
             
             items = items_data.get('value', [])
-            print(f"✅ Found {len(items)} items in {folder_path}")
+            print(f"Found {len(items)} items in {folder_path}")
             
             structure = []
             for item in items:
@@ -210,13 +210,13 @@ class OneDriveGeminiAssistant:
             return structure
             
         except Exception as e:
-            print(f"❌ Error getting directory structure for {folder_path}: {e}")
+            print(f"Error getting directory structure for {folder_path}: {e}")
             return []
 
     def get_all_files_flat(self):
         """Get all files in a flat list recursively from all folders"""
         try:
-            print("🔍 Getting all files from OneDrive recursively...")
+            print("Getting all files from OneDrive recursively...")
             
             # Try different approaches to get files
             files = []
@@ -257,7 +257,7 @@ class OneDriveGeminiAssistant:
             
             # Method 2: Recursive traversal of all folders
             try:
-                print("📡 Trying recursive folder traversal...")
+                print("Trying recursive folder traversal...")
                 files = self.get_files_recursively("/")
                 if files:
                     print(f"Recursive method found {len(files)} files")
@@ -306,7 +306,7 @@ class OneDriveGeminiAssistant:
                 if drive_info:
                     print(f"Drive access confirmed: {drive_info.get('driveType', 'Unknown')}")
                 else:
-                    print("❌ Cannot access drive")
+                    print("Cannot access drive")
             except Exception as e:
                 print(f"Drive access failed: {e}")
             
@@ -503,7 +503,7 @@ class OneDriveGeminiAssistant:
             if not self.genai:
                 return "Gemini AI is not available. Please check your API key."
             
-            print(f"🤖 Processing question for {len(selected_items)} selected items: {question}")
+            print(f"Processing question for {len(selected_items)} selected items: {question}")
             
             # Process all selected items
             all_contents = []
@@ -555,7 +555,7 @@ class OneDriveGeminiAssistant:
                         print(f"No content could be read from folder: {item['name']}")
             
             if not all_contents:
-                return "❌ No content could be read from the selected items. Please check if the files are accessible and try again."
+                return "No content could be read from the selected items. Please check if the files are accessible and try again."
             
             print(f"Successfully processed {len(all_contents)} items for AI analysis")
             
@@ -626,7 +626,7 @@ Please provide a helpful answer:"""
             if not self.genai:
                 return "Gemini AI is not available. Please check your API key."
             
-            print(f"🤖 Processing question with ALL OneDrive files: {question}")
+            print(f"Processing question with ALL OneDrive files: {question}")
             
             # Get all files from OneDrive
             files = self.get_all_files_flat()[:10]  # Limit to 10 files for performance
@@ -657,7 +657,7 @@ Please provide a helpful answer:"""
                 print("Files found but couldn't be read, providing general response")
                 return self.query_general_question(question)
             
-            print(f"📊 Successfully processed {len(file_contents)} files for AI analysis")
+            print(f"Successfully processed {len(file_contents)} files for AI analysis")
             
             # Create context for Gemini
             context = "All OneDrive Files Content:\n\n"
