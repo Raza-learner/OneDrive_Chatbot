@@ -1,0 +1,35 @@
+USE CASE 1 — On-Field Coaching & Training Support
+
+File: Opponent Pressing Structure — Match Analysis
+Opponent: City United U-18
+Match Date: Yesterday
+Competition: League
+
+Overall Pressing Style:
+- High press in 4-3-3 shape when ball is with our center-backs.
+- Mid-block 4-1-4-1 when ball is in our half but outside final third.
+- Triggers: poor back-pass, slow lateral pass, receiving player with back to goal.
+
+Build-Up Disruption:
+- They forced play wide by screening our 6 (CDM).
+- Wingers pressed our full-backs aggressively when ball went wide.
+- Center forward curved pressing runs to block pass back across the back line.
+
+Pressing Triggers (examples):
+1) Back-pass from full-back to center-back.
+2) Slow square pass between center-backs.
+3) Goalkeeper receiving under pressure.
+
+Weaknesses Observed:
+- When we played one-touch into the 8/10 behind their first line, they were late to shift.
+- Large gaps between their back line and midfield when press was broken.
+- Full-backs overcommitted, leaving space in channels.
+
+Key Clips (timecodes as examples):
+- Clip 1: 05:32 — high press wins ball near our box.
+- Clip 2: 22:15 — we beat the press with wall pass into 8.
+- Clip 3: 61:47 — long diagonal to weak-side winger behind their full-back.
+
+Questions this file can answer:
+- "Summarize the opponent’s pressing structure from yesterday’s analysis."
+- "Where are the main spaces to exploit when we beat their press?"

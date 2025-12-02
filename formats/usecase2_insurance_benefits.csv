@@ -1,0 +1,8 @@
+USE CASE 2 — Contract & Legal Document Intelligence
+File,Type,Benefit Category,Benefit Description,Coverage Limit
+PlayerA_Contract,contract,Medical,Match injury treatment,Full cost at approved providers
+PlayerA_Contract,contract,Rehabilitation,Physiotherapy sessions,Up to 30 sessions per major injury
+PlayerA_Contract,contract,Surgery,Surgical procedures from football injuries,Subject to policy schedule
+League_Insurance_Guide,pdf,Accident,Travel accident coverage,Up to $250,000 per incident
+League_Insurance_Guide,pdf,Death & Disability,Long-term disability cover,As per league standard policy
+League_Insurance_Guide,pdf,Equipment,Lost/damaged equipment while travelling,Max $2,000 per season

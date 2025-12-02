@@ -1,0 +1,39 @@
+USE CASE 2 — Contract & Legal Document Intelligence
+
+File: Player A — Contract Summary (Text Version)
+Player: John Doe (Player A)
+Club: Elite FC
+Contract Start: 01 July 2025
+Contract End: 30 June 2028
+
+1) Base Salary
+- Year 1: $120,000
+- Year 2: $130,000
+- Year 3: $140,000
+- Payable in 12 equal monthly installments.
+
+2) Performance Bonuses
+- Appearance bonus: $1,000 per official match played (min. 30 minutes).
+- Goal bonus (attacking player): $500 per competitive goal.
+- Team bonus: $5,000 if club qualifies for playoffs.
+
+3) Termination Clause
+- Either party may terminate for just cause as defined by league and federation regulations.
+- Club unilateral termination:
+  - Without just cause: club must pay remaining guaranteed salary for the contract term.
+  - With just cause: no further salary owed beyond date of termination.
+- Player unilateral termination:
+  - Must provide 30 days’ written notice.
+  - Subject to league transfer and registration rules.
+
+4) Insurance & Medical Coverage (High-Level)
+- Player enrolled in club medical insurance plan.
+- Coverage includes match and training injuries, rehabilitation, and surgeries subject to policy terms.
+- Additional accident coverage for travel to/from official club activities.
+
+5) Dispute Resolution
+- Disputes to be resolved via league arbitration panel before any civil court action.
+
+Example questions this file can answer:
+- "What is the termination clause for Player A?"
+- "What bonuses is Player A eligible for?"

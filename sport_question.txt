@@ -1,0 +1,34 @@
+  **Use Case 1 – On-Field Coaching & Training**
+
+  • Warm-up & drills
+    • “Show me all warm-up drills suited for U-18 players.”
+    • “From my training documents, list 3 dynamic warm-up routines for match day.”
+    • “Recommend a 20-minute pre-match warm-up for U-18 based on my drill sheets.”
+  • Tactics / pressing
+    • “Summarize the opponent’s pressing structure from yesterday’s analysis.”
+    • “What pressing triggers does City United U-18 use according to my reports?”
+    • “Where are the main spaces to exploit when we beat their press?”
+
+
+  **Use Case 2 – Contract & Legal Document Intelligence**
+
+  • Contracts & clauses
+    • “What is the termination clause for Player A?”
+    • “List all bonuses and incentives in Player A’s contract.”
+    • “Are there any automatic extension clauses in my player contracts?”
+  • Insurance & benefits
+    • “List all insurance coverage benefits for players from my documents.”
+    • “What medical and rehabilitation coverage does the club provide under the current policy?”
+    • “Summarize travel accident coverage for players from my league insurance guide.”
+
+
+  **Use Case 3 – Opponent Scouting & Match Prep**
+
+  • Formations & style
+    • “What formation did Team X use in their last 5 matches?”
+    • “Describe Team X’s build-up patterns from my scouting reports.”
+    • “How does Team X press when the opponent builds from the back?”
+  • Weaknesses & match plan
+    • “Extract weaknesses mentioned for Team Y from my scouting reports.”
+    • “What set-piece weaknesses does Team Y have according to my files?”
+    • “Based on my scouting reports, how should we attack Team Y’s defensive line?”

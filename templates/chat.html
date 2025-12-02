@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneDrive AI Assistant</title>
+    <title>Sports Performance AI Assistant</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -810,7 +810,7 @@
                 <div class="sidebar-logo">
                     <i class="fab fa-microsoft"></i>
                 </div>
-                <h2>OneDrive AI</h2>
+                <h2>Sports AI for OneDrive</h2>
             </div>
 
             <div class="user-info">
@@ -830,7 +830,7 @@
                 </div>
                 <div class="selection-mode" id="selectionMode">
                     <i class="fas fa-globe"></i>
-                    <span>Searching ALL files</span>
+                    <span>Searching ALL club files</span>
                 </div>
                 <div class="selected-items" id="selectedItems">
                     <!-- Selected items will appear here -->
@@ -839,8 +839,8 @@
 
             <div class="file-browser">
                 <h4>
-                    <i class="fas fa-folder-open"></i>
-                    OneDrive Files
+                    <i class="fas fa-futbol"></i>
+                    Club Files (Training, Contracts, Scouting)
                     <button class="reinitialize-btn" onclick="reinitializeFiles()">
                         <i class="fas fa-sync-alt"></i>
                         Refresh
@@ -891,12 +891,12 @@
             <div class="chat-header">
                 <h1>
                     <i class="fas fa-robot"></i>
-                    AI Assistant
+                    Sports Performance Assistant
                     <button class="sidebar-toggle" onclick="toggleSidebar()" id="sidebarToggle">
                         <i class="fas fa-bars"></i>
                     </button>
                 </h1>
-                <p>Ask questions about your OneDrive files or get help with specific documents</p>
+                <p>Ask questions about training plans, player contracts, and scouting reports stored in your OneDrive</p>
             </div>
 
             <div class="chat-messages" id="chatMessages">
@@ -906,18 +906,18 @@
                     </div>
                     <div class="message-content">
                         <div class="message-text">
-                            Hello! I'm your OneDrive AI assistant. I can help you:
-                            <br>• Search through ALL your OneDrive files automatically
-                            <br>• Analyze specific documents when you select them
-                            <br>• Process multiple files at once
-                            <br>• Analyze data in spreadsheets and PDFs
+                            Hello coach! I'm your sports performance AI assistant. I can help you:
+                            <br>• Search through ALL your club's OneDrive files automatically
+                            <br>• Analyze tactical PDFs, drill sheets and fitness plans
+                            <br>• Understand player contracts, clauses and insurance coverage
+                            <br>• Break down scouting reports and opponent tendencies
                             <br><br><strong>How to use:</strong>
-                            <br>• <strong>No files selected:</strong> I'll search through ALL your OneDrive files
-                            <br>• <strong>Files selected:</strong> I'll only analyze the files you've chosen
+                            <br>• <strong>No files selected:</strong> I'll search through ALL your club files
+                            <br>• <strong>Files selected:</strong> I'll only analyze the files you've chosen (e.g. one contract or specific scouting report)
                             <br>• <strong>Click checkboxes</strong> to select/deselect files
                             <br>• <strong>Selected files</strong> will show blue background
                             <br>• <strong>Click ❌ buttons</strong> to remove individual files
-                            <br>• <strong>Select multiple files</strong> to analyze them together
+                            <br>• <strong>Select multiple files</strong> to analyze drills, contracts or scouting reports together
                         </div>
                         <div class="message-time" id="welcomeTime">Just now</div>
                     </div>
@@ -926,28 +926,28 @@
 
             <div class="chat-input-container">
                 <div class="input-wrapper">
-                    <textarea id="messageInput" placeholder="Ask me anything about your OneDrive files..." rows="1"></textarea>
+                    <textarea id="messageInput" placeholder="Ask about training plans, contracts, or scouting reports..." rows="1"></textarea>
                     <button id="sendButton" disabled>
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
                 
                 <div class="suggestions">
-                    <div class="suggestion" data-question="What files do I have in my OneDrive?">
-                        <i class="fas fa-search"></i>
-                        List all my files
+                    <div class="suggestion" data-question="Show me all warm-up drills suited for U-18 players.">
+                        <i class="fas fa-running"></i>
+                        Find U-18 warm-up drills
                     </div>
-                    <div class="suggestion" data-question="Summarize all my recent documents">
-                        <i class="fas fa-file-alt"></i>
-                        Summarize all documents
+                    <div class="suggestion" data-question="What is the termination clause for Player A in their contract?">
+                        <i class="fas fa-file-contract"></i>
+                        Explain Player A contract clause
                     </div>
-                    <div class="suggestion" data-question="Find all files related to project management">
-                        <i class="fas fa-folder"></i>
-                        Find project files
+                    <div class="suggestion" data-question="What formation did Team X use in their last 5 matches?">
+                        <i class="fas fa-tshirt"></i>
+                        Analyze Team X formations
                     </div>
-                    <div class="suggestion" data-question="What are the main topics in my files?">
-                        <i class="fas fa-brain"></i>
-                        Analyze file topics
+                    <div class="suggestion" data-question="Extract weaknesses mentioned for Team Y from my scouting reports.">
+                        <i class="fas fa-bullseye"></i>
+                        List Team Y weaknesses
                     </div>
                 </div>
             </div>
@@ -1234,7 +1234,7 @@
                     <i class="${avatarIcon}"></i>
                 </div>
                 <div class="message-content">
-                    <div class="message-text">${escapeHtml(text)}</div>
+                    <div class="message-text">${parseMarkdown(text)}</div>
                     <div class="message-time">${time}</div>
                 </div>
             `;
@@ -1277,6 +1277,23 @@
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
+        }
+
+        function parseMarkdown(text) {
+            // First escape HTML for security
+            let html = escapeHtml(text);
+            
+            // Convert **text** to <strong>text</strong> (bold) - handle multiple bold sections
+            html = html.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>');
+            
+            // Convert *text* to <em>text</em> (italic) - only if not part of **
+            // Use a more compatible approach: replace single asterisks that aren't adjacent to other asterisks
+            html = html.replace(/(^|[^*])\*([^*]+?)\*([^*]|$)/g, '$1<em>$2</em>$3');
+            
+            // Convert line breaks to <br>
+            html = html.replace(/\n/g, '<br>');
+            
+            return html;
         }
     </script>
 </body>

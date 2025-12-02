@@ -1,0 +1,29 @@
+USE CASE 3 — Opponent Scouting & Match Prep
+
+File: Team X Scouting Report
+Team: Team X
+Matches Analyzed: Last 5 league matches
+
+1) Base Formation
+- Nominal formation: 4-3-3 in possession.
+- Out of possession: often drops into 4-1-4-1 mid-block.
+
+2) Formation by Match (Last 5)
+- Match 1: 4-3-3 (high press first 30 minutes, then mid-block).
+- Match 2: 4-2-3-1 (10 switched to second striker in final 20 minutes).
+- Match 3: 4-3-3 (inverted wingers, full-backs very high).
+- Match 4: 4-4-2 diamond when chasing result, starting from 4-3-3.
+- Match 5: 4-3-3 (compact, narrow midfield three to block central channels).
+
+3) Key Patterns
+- Build-up: Prefer short build from GK, use 6 dropping between CBs.
+- Chance creation: Overloads on right side, cut-backs to penalty spot.
+- Pressing: Triggers on backwards passes and poor touches by opposition CBs.
+
+4) Weaknesses
+- Vulnerable to quick switches to opposite flank when FB presses high.
+- CBs struggle with balls played into space behind when line is high.
+
+Example questions this file can answer:
+- "What formation did Team X use in their last 5 matches?"
+- "Where are the main weaknesses in Team X’s defensive structure?"

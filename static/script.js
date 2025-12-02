@@ -327,7 +327,7 @@ class ChatApp {
                 <i class="${avatarIcon}"></i>
             </div>
             <div class="message-content">
-                <div class="message-text">${this.escapeHtml(text)}</div>
+                <div class="message-text">${this.parseMarkdown(text)}</div>
                 <div class="message-time">${time}</div>
             </div>
         `;
@@ -370,6 +370,23 @@ class ChatApp {
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
+    }
+
+    parseMarkdown(text) {
+        // First escape HTML for security
+        let html = this.escapeHtml(text);
+        
+        // Convert **text** to <strong>text</strong> (bold) - handle multiple bold sections
+        html = html.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>');
+        
+        // Convert *text* to <em>text</em> (italic) - only if not part of **
+        // Use a more compatible approach: replace single asterisks that aren't adjacent to other asterisks
+        html = html.replace(/(^|[^*])\*([^*]+?)\*([^*]|$)/g, '$1<em>$2</em>$3');
+        
+        // Convert line breaks to <br>
+        html = html.replace(/\n/g, '<br>');
+        
+        return html;
     }
 
     getCurrentTime() {
